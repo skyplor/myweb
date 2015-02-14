@@ -1,43 +1,47 @@
 <?php
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+
+class Uploader
+{
+	private $fileName;
+	private $contentLength;
+	private $path;
+	private $log;
+	
+	public function __construct($uploads)
+	{
+		$this->path=$uploads;
+		$log=fopen($this->path . 'log.txt','w');
+        if (array_key_exists('HTTP_X_FILE_NAME', $_SERVER) && array_key_exists('CONTENT_LENGTH', $_SERVER)) {
+            $this->fileName = $_SERVER['HTTP_X_FILE_NAME'];
+			fwrite($log,"Receiving '" .  $this->fileName . "'\n");
+            $this->contentLength = $_SERVER['CONTENT_LENGTH'];
+        } else throw new Exception("Error retrieving headers");
+	}
+    
+    public function receive()
+    {
+        if (!$this->contentLength > 0) {
+            throw new Exception('No file uploaded!');
+        }
+		
+        file_put_contents(
+            $this->path . $this->fileName,
+            file_get_contents("php://input")
+        );
+        
+		fclose($log);
+        return true;
     }
 }
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
+
+$uploads="uploads/";
+try {
+	$ft = new Uploader($uploads);
+	$ft->receive();
+} catch (Exception $e) {
+	$fd=fopen($uploads . 'err.txt','w');
+    fwrite($fd,'Caught exception: ' .  $e->getMessage() . "\n");
+	fclose($fd);
 }
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 200000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-if($imageFileType != "pdf" ) {
-    echo "Sorry, PDF files are allowed.";
-    $uploadOk = 0;
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
+fclose($log);
 ?>
