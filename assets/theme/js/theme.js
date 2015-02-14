@@ -147,6 +147,7 @@
   //captcha configuration
   function initCaptcha() {
     $('#mycaptcha').simpleCaptcha({
+	  refreshButton: "<img src=\"/assets/plugins/simpleCaptcha/refresh.png\" />"
       scriptPath: "assets/plugins/simpleCaptcha/simpleCaptcha.php"
     });
 
