@@ -47,7 +47,7 @@
           $.ajax({
             type: 'POST',
             data: params,
-            url: "php/sending_mail.php",
+            url: "assets/php/sending_mail.php",
             beforeSend: function() {
               el.find('.preload-submit').removeClass('hidden');
               el.find('.message-submit').addClass('hidden');
@@ -82,7 +82,7 @@
 
       var uploader = new ss.SimpleUpload({
         button: btn,
-        url: 'php/upload.php',
+        url: 'assets/php/upload.php',
         progressUrl: 'assets/plugins/Simple-Ajax-Uploader/extras/uploadProgress.php',
         name: 'fileatt',
         multiple: false,
