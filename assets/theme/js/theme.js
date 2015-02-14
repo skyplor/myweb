@@ -147,7 +147,7 @@
   //captcha configuration
   function initCaptcha() {
     $('#mycaptcha').simpleCaptcha({
-	  refreshButton: "<input type='button' value='Refresh' src='assets/plugins/simpleCaptcha/refresh.png' class='refreshButton' alt='Refresh'/>",
+	  allowRefresh: false,
       scriptPath: "assets/plugins/simpleCaptcha/simpleCaptcha.php"
     });
 
@@ -158,7 +158,7 @@
         $(this).addClass('simpleCaptchaSelected');
         $('.simpleCaptchaInput').val($(this).data('hash'));
       });
-    });
+    });	
   }
 
   //Typed Animation
