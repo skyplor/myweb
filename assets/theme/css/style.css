@@ -22,7 +22,6 @@ This files contents are outlined below.
   - CONTACT
   - TESTIMONIAL
   - PARALLAX
-  - CAPTCHA
 07. MAIN-FOOTER 
 */
 /*============================
@@ -1816,20 +1815,6 @@ textArea.form-flat {
     background-attachment: inherit;
     background-position: center !important;
   }
-}
-/*== CAPTCHA == */
-.simpleCaptcha {
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-.simpleCaptcha .captchaImages img {
-  width: 30px;
-}
-.simpleCaptcha p {
-  padding: 0;
-  margin-left: 0;
-  margin-right: 0;
 }
 /*============================
      06. MAIN-FOOTER 
