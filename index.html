@@ -38,7 +38,7 @@
   </head>
 
 
-  <body  data-spy="scroll" data-target=".menu-area" data-offset="200">
+  <body  data-spy="scroll" data-target=".menu-area" data-offset="200" onload="initBlog()">
     <!--wrapper page-->
     <div class="wrapper">
 
@@ -147,7 +147,7 @@
               <div class="inner-text">
                 <p class="no-margin color-light ">
                   <strong class="fix-width-100"><i class="fa fa-skype margin-right-5"></i> Skype</strong> : skypay87<br/>
-                  <strong class="fix-width-100"><i class="fa fa-envelope margin-right-5"></i> Email</strong> : hireable@skypayjm.com<br/>
+                  <strong class="fix-width-100"><i class="fa fa-envelope margin-right-5"></i> Email</strong> : hireable[at]skypayjm[dot]com<br/>
                   <strong class="fix-width-100"><i class="fa fa-globe margin-right-5"></i> Website</strong> : www.skypayjm.com<br/>
                   <strong class="fix-width-100"><i class="fa fa-location-arrow margin-right-5"></i>Current City</strong> : Singapore<br/>
                 </p>
@@ -600,10 +600,12 @@
             </div>
           </div>
         </div><!--END BLOG TITLE-->
-<!--
+
         <div class="block-page">
-          <div class="container-medium">-->
-            <!--LIST BLOG--><!--
+          <div class="container-medium">
+            <!--LIST BLOG-->
+			<div id="content"></div>
+			<!--
             <ul class="list-unstyled list-blog">
               <li>
                 <div class="clearfix box-blog">
@@ -655,13 +657,13 @@
                     <a href="blog-detail.html" class="btn btn-xs btn-flat-solid primary-btn">Read More</a>
                   </div>
                 </div>
-              </li>-->
-            </ul> <!--END LIST BLOG-->
+              </li>
+            </ul> --><!--END LIST BLOG-->
 
-            <!--BTN SHOW MORE--><!--
-            <div class="box-btn-more"><a href="blog-list.html" class="btn btn-flat-line btn-link" id="more-blog"> Show More</a></div>
+            <!--BTN SHOW MORE-->
+            <div class="box-btn-more"><a href="http://blog.skypayjm.com" class="btn btn-flat-line btn-link" id="more-blog"> Show More</a></div>
           </div>
-        </div>-->
+        </div>
       </section> <!--END BLOG-->
 
       <!--CONTACT-->
@@ -671,7 +673,7 @@
           <div class="bg-secondary block-title">
             <div class="container">
               <h2 class="text-uppercase color-dark text-bold no-margin">Contact</h2>
-			  <p>Feel free to email me for a job, or to just say hello!</p>
+			  <p>Feel free to email me for any opportunity, or just to say hello!</p>
 			  <ul class="list-inline banner-social-buttons">
 			    <li>
 				  <a href="mailto:hireable@skypayjm.com"><i class="banner-icon fa fa-envelope-o"></i> </a>
@@ -695,46 +697,28 @@
             </div>
           </div>
         </div><!--END CONTACT TITLE-->
-          <!--MAP-->
-          <div class="map-area" id="map-contact"></div>
-          <div class="hidden map-contact-body">
-            <div class="map-content">
-              <h4 class="no-margin-top font-alt">I am Here</h4>
-              <p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 8723 Bogor, West Java</p>
-              <p><i class="fa fa-mobile"></i> <strong>Phone:</strong> 87-3898-221 </p>
-              <p><i class="fa fa-envelope"></i> <strong>Email:</strong> someone@company.com</p>
-            </div>
-          </div>
-          <!--END MAP-->
-        </div>
+		  <!--MAP-->
+		  <div class="map-area" id="map-contact"></div>
+		  <div class="hidden map-contact-body">
+			<div class="map-content">
+			  <h4 class="no-margin-top font-alt">I am Here</h4>
+			  <p><i class="fa fa-map-marker"></i> <strong>Address:</strong> Block 333A Yishun Street 31 S(761333)</p>
+			  <p><i class="fa fa-mobile"></i> <strong>Phone:</strong> +65 96729784 </p>
+			  <p><i class="fa fa-envelope"></i> <strong>Email:</strong> hireable[at]skypayjm[dot]com</p>
+			</div>
+		  </div>
+		  <!--END MAP-->
       </section><!--END CONTACT-->
 
 
       <!--FOOTER-->
       <footer class="main-footer">
         <div class="container">
-          <div class="folow-me">
-            Follow Me On
+          <div class="available">
+            Available for Hire
           </div>
-          <ul class="list-inline social-links text-center">
-            <li>
-              <a href="https://www.facebook.com/sky.jm"  data-toggle="tooltip"  data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="https://plus.google.com/+SkyPayJM"  data-toggle="tooltip"  data-placement="top" title="Google"><i class="fa fa-google"></i></a>
-            </li>
-            <li>
-              <a href="https://twitter.com/sky_pay"  data-toggle="tooltip"  data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/skypay/en"  data-toggle="tooltip"  data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a>
-            </li>
-            <li>
-              <a href="https://github.com/skyplor"  data-toggle="tooltip"  data-placement="top" title="Github"><i class="fa fa-github"></i></a>
-            </li>
-          </ul>
           <p class="text-center no-margin">
-            Solid - All Rights Reserved &COPY; 2014
+            Sky - All Rights Reserved &COPY; 2015
           </p>
           <a href="#home" class="back-to-top"><i class="fa fa-angle-double-up" ></i></a>
         </div>
@@ -764,5 +748,6 @@
     <!--=====================================================-->
     <!--configuration template-->
     <script src="assets/theme/js/theme.js"></script>
+    <script src="assets/theme/js/blogger.js"></script>
   </body>
 </html>
