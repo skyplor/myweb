@@ -21,12 +21,9 @@ function listEntries(json) {
 	var div_blog_title = document.createElement('div');
 	div_blog_title.className = "blog-title";
 	var span_blog_title = document.createElement('span');
-	span_blog_title.style.verticalAlign = "middle";
-	span_blog_title.style.display = "table-cell";
-	span_blog_title.style.height = "200px";
+	span_blog_title.className = "span-blog-title"
 	var h3_blog_title = document.createElement('h3');
-	h3_blog_title.className = "text-uppercase color-dark text-bold";
-	h3_blog_title.style.textAlign = "center";
+	h3_blog_title.className = "text-center text-capitalize color-dark text-light";
 	var title = document.createTextNode(entry.title.$t);
     h3_blog_title.appendChild(title);
 	span_blog_title.appendChild(h3_blog_title);
@@ -59,10 +56,14 @@ function listEntries(json) {
 	div_post_meta.appendChild(span_date);
 	div_blog_content.appendChild(div_post_meta);
 	var p = document.createElement('p');
-	var paragraph = entry.content.$t;
-	var cut_paragraph = paragraph.substring(0,301) + "...";
-	var txt_paragraph = document.createTextNode(cut_paragraph);
-	p.appendChild(txt_paragraph);
+	//var paragraph = entry.content.$t;
+	//var cut_paragraph = paragraph.substring(0,301) + "...";
+	var txt_paragraph = entry.content.$t;
+	//var txt_paragraph = document.createTextNode(p.innerHTML);
+	//p.appendChild(txt_paragraph);
+	var wanted_count = 300;
+	var output = cutHtmlString(txt_paragraph, wanted_count) + "...";
+	p.innerHTML = output;
 	div_blog_content.appendChild(p);
     var alturl;
     for (var k = 0; k < entry.link.length; k++) {
@@ -138,5 +139,74 @@ function removeOldResults() {
   var div = document.getElementById('content');
   if (div.firstChild) {
     div.removeChild(div.firstChild);
-  }
+  }  
+}
+/*jsl:option explicit*/
+/*jsl:declare document*/
+/*
+This class is used to cut the string which is having html tags. 
+It does not count the html tags, it just count the string inside tags and keeps
+the tags as it is.
+
+ex: If the string is "welcome to <b>JS World</b> <br> JS is bla". and If we want to cut the string of 12 charaters then output will be "welcome to <b>JS</b>". 
+
+Here while cutting the string it keeps the tags for the cutting string and skip the rest and without distorbing the div structure.
+
+USAGE:
+ var obj = new cutString("welcome to <b>JS World</b> <br> JS is",12);
+ var newCutString = obj.cut();
+*/
+function CutString(string,limit){
+    // temparary node to parse the html tags in the string
+    this.tempDiv = document.createElement('div');
+    this.tempDiv.id = "TempNodeForTest";
+    this.tempDiv.innerHTML = string;
+    // while parsing text no of characters parsed
+    this.charCount = 0;
+    this.limit = limit;
+
+}
+CutString.prototype.cut = function(){
+    var newDiv = document.createElement('div');
+    this.searchEnd(this.tempDiv, newDiv);
+    return newDiv.innerHTML;
+};
+
+CutString.prototype.searchEnd = function(parseDiv, newParent){
+    var ele;
+    var newEle;
+    for(var j=0; j< parseDiv.childNodes.length; j++){
+        ele = parseDiv.childNodes[j];
+        // not text node
+        if(ele.nodeType != 3){
+            newEle = ele.cloneNode(true);
+            newParent.appendChild(newEle);
+            if(ele.childNodes.length === 0)
+                continue;
+            newEle.innerHTML = '';
+            var res = this.searchEnd(ele,newEle);
+            if(res)
+                return res;
+            else{
+                continue;
+            }
+        }
+
+        // the limit of the char count reached
+        if(ele.nodeValue.length + this.charCount >= this.limit){
+            newEle = ele.cloneNode(true);
+            newEle.nodeValue = ele.nodeValue.substr(0, this.limit - this.charCount);
+            newParent.appendChild(newEle);
+            return true;
+        }
+        newEle = ele.cloneNode(true);
+        newParent.appendChild(newEle);
+        this.charCount += ele.nodeValue.length;
+    }
+    return false;
+};
+
+function cutHtmlString($string, $limit){
+    var output = new CutString($string,$limit);
+    return output.cut();
 }

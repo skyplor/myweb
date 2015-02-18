@@ -1515,17 +1515,25 @@ textArea.form-flat {
   position: relative;
   border: 1px solid #ebebeb;
 }
+.list-blog li .box-blog .span-blog-title {
+  vertical-align: middle;
+  display: table-cell;
+  height: inherit;
+}
+
 .list-blog li .box-blog .blog-title {
   width: 50%;
   float: left;
   position: absolute;
   left: 0;
   overflow: hidden;
-  top: 0;
-  height: 100%;
+  /*top: 0;*/
+  height: inherit;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  top: 50%;
+    transform: translateY(-50%);
 }
 .list-blog li .box-blog .blog-title .blog-ic {
   position: absolute;
@@ -1547,7 +1555,7 @@ textArea.form-flat {
   -moz-transition: all 0.8s ease 0s;
   -o-transition: all 0.8s ease 0s;
   -ms-transition: all 0.8s ease 0s;
-  height: 100%;
+  height: inherit;
   left: 0;
   top: 0;
   right: inherit;
@@ -1575,7 +1583,7 @@ textArea.form-flat {
 @media (max-width: 768px) {
   .list-blog li .box-blog .blog-title {
     width: 100%;
-    height: 300px;
+    height: inherit;
     float: none;
     position: relative;
   }
