@@ -1515,11 +1515,6 @@ textArea.form-flat {
   position: relative;
   border: 1px solid #ebebeb;
 }
-.list-blog li .box-blog .span-blog-title {
-  vertical-align: middle;
-  display: table-cell;
-  height: inherit;
-}
 
 .list-blog li .box-blog .blog-title {
   width: 50%;
@@ -1527,14 +1522,13 @@ textArea.form-flat {
   position: absolute;
   left: 0;
   overflow: hidden;
-  /*top: 0;*/
+  top: 0;
   height: inherit;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  top: 50%;
-    transform: translateY(-50%);
 }
+
 .list-blog li .box-blog .blog-title .blog-ic {
   position: absolute;
   bottom: 0;
