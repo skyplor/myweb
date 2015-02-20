@@ -20,7 +20,7 @@ This files contents are outlined below.
   - PORTFOLIO
   - BLOG
   - CONTACT
-  - TESTIMONIAL
+  - TECHNOLOGIES
   - PARALLAX
 07. MAIN-FOOTER 
 */
@@ -123,6 +123,15 @@ h6 {
   margin-right: auto;
   margin-left: auto;
   max-width: 625px;
+  position: relative;
+  z-index: 1;
+}
+.container-xxs {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 480px;
   position: relative;
   z-index: 1;
 }
@@ -1712,8 +1721,8 @@ textArea.form-flat {
 .map-content i {
   margin-right: 2px;
 }
-/*== TESTIMONIAL == */
-.box-testimonial {
+/*== TECHNOLOGIES == */
+.box-technologies {
   margin: 0 auto;
   margin-bottom: 30px;
   border: 1px solid #ebebeb;
@@ -1723,14 +1732,14 @@ textArea.form-flat {
   background: #ffffff;
   max-width: 530px;
 }
-.box-testimonial.left {
+.box-technologies.left {
   margin-left: 30px;
 }
-.box-testimonial h4,
-.box-testimonial h5 {
+.box-technologies h4,
+.box-technologies h5 {
   letter-spacing: 3px;
 }
-.box-testimonial .img-profile {
+.box-technologies .img-profile {
   width: 60px;
   margin: 30px 0;
   position: absolute;
@@ -1740,11 +1749,11 @@ textArea.form-flat {
   top: 0;
   left: -30px;
 }
-.box-testimonial .img-logo-client {
+.box-technologies .img-logo-client {
   height: 30px;
 }
 @media (max-width: 600px) {
-  .box-testimonial {
+  .box-technologies {
     margin-left: 30px;
   }
 }
