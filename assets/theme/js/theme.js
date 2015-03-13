@@ -1,7 +1,7 @@
 (function($) {
   "use strict";
 
-  //Run function When Document Ready
+  /*Run function When Document Ready*/
   $(document).ready(initialize());
 
   function initialize() {
@@ -18,62 +18,62 @@
     initHold();
   }
   
-  //Run function When PACE (page loader) hide
+  /*Run function When PACE (page loader) hide*/
   Pace.on('hide', function() {
     $('.wrapper').css('visibility', 'visible').animate({opacity: 1.0}, 2000, function() {
       initCheckNav();
     });
-    //check if url contain hash(#)
+    /*check if url contain hash(#)*/
     if (window.location.hash) {
       $('.link-inpage[href="' + window.location.hash + '"]').first().trigger('click');
     }
   });
 
-  //Run function When WIndow Resize
+  /*Run function When WIndow Resize */
   $(window).resize(function() {
     initParallax();
   });
 
-  //Typed Animation
+  /*Typed Animation*/
   function initTyped() {
     $("#typed").typed({
       strings: ["The Dancer", "The Software Engineer", "The Android Developer", "The Problem-Solver"],
-      // typing speed
+      /* typing speed*/
       typeSpeed: 80,
-      // time before typing starts
+      /* time before typing starts*/
       startDelay: 100,
-      // backspacing speed
+      /* backspacing speed*/
       backSpeed: 50,
-      // time before backspacing
+      /* time before backspacing*/
       backDelay: 800,
-      // loop
+      /* loop*/
       loop: true,
-      // false = infinite
+      /* false = infinite*/
       loopCount: false,
-      // show cursor
+      /* show cursor*/
       showCursor: true,
-      // character for cursor
+      /* character for cursor*/
       cursorChar: ".",
-      // attribute to type (null == text)
+      /* attribute to type (null == text)*/
       attr: null,
-      // either html or text
+      /* either html or text*/
       contentType: 'html',
-      // call when done callback function
+      /* call when done callback function*/
       callback: function() {
       },
-      // starting callback function before each string
+      /* starting callback function before each string*/
       preStringTyped: function() {
       },
-      //callback for every typed string
+      /*callback for every typed string*/
       onStringTyped: function() {
       },
-      // callback for reset
+      /* callback for reset*/
       resetCallback: function() {
       }
     });
   }
 
-  //Lightbox (popup)
+  /*Lightbox (popup)*/
   function initLightBox() {
     $('.list-work').magnificPopup({
       delegate: 'a.gallery-item',
@@ -83,7 +83,7 @@
       gallery: {
         enabled: true,
         navigateByImgClick: true,
-        preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+        preload: [0, 1] /* Will preload 0 - before current, and 1 after the current image*/
       },
       image: {
         tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
@@ -103,7 +103,7 @@
     });
   }
 
-  //Chart
+  /*Chart*/
   function initEasyChart() {
     $('.chart').easyPieChart({
       easing: 'easeOutBounce',
@@ -114,7 +114,7 @@
     });
   }
 
-  //Click Envents
+  /*Click Events*/
   function initClickedEvents() {
     $('#hireme-tab').click(function() {
       $('#myTab a[href="#tab1"]').tab('show');
@@ -141,13 +141,13 @@
       $('html, body').stop().animate({
         'scrollTop': $target.offset().top - ($('.menu-area').outerHeight() - 1)
       }, 1500, 'easeInOutExpo', function() {
-        //window.location.hash = target;
+        /*window.location.hash = target;*/
       });
       return false;
     });
   }
 
-  //Navbar Scroll
+  /*Navbar Scroll*/
   function initNavbarScroll() {
     if ($('.main-header').length > 0) {
       var mainbottom = $('.main-header').offset().top + $('.main-header').height();
@@ -158,7 +158,7 @@
     }
   }
 
-  //Check Navbar Show
+  /*Check Navbar Show*/
   function initCheckNav() {
     if ($('.main-header').length > 0) {
       var mainbottom = $('.main-header').offset().top + $('.main-header').height();
@@ -167,7 +167,7 @@
     }
   }
 
-  //Condition Navbar
+  /*Condition Navbar*/
   function conditionNavbar(stopWindow, mainbottom) {
     if (stopWindow > mainbottom) {
       $('.menu-area').addClass('nav-fixed');
@@ -179,14 +179,14 @@
     }
   }
 
-  //Bg Parallax
+  /*Bg Parallax*/
   function initParallax() {
     $('.parallax-bg').each(function() {
       $(this).parallax("50%", 0.3);
     });
   }
 
-  //Set header to window
+  /*Set header to window*/
   function initGetHWindow() {
     var wHeight = $(window).height();
     if (wHeight > 600 && !$('.main-header').hasClass('no-window')) {
@@ -194,7 +194,7 @@
     }
   }
 
-  //Map
+  /*Map*/
   function initMap() {
     $('#map-contact').gmap({
       'center': '1.2896700, 103.8500700',
@@ -226,17 +226,17 @@
     });
   }
 
-  //Tooltip Bootstrap
+  /*Tooltip Bootstrap*/
   function initTooltip() {
     $('[data-toggle="tooltip"]').tooltip();
   }
 
-  //Trigger Custom Btn FIle
+  /*Trigger Custom Btn File*/
   function initBtnFile() {
     $(document).on('change', '.btn-file :file', function() {
       var input = $(this),
               numFiles = input.get(0).files ? input.get(0).files.length : 1,
-              label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+              label = input.val().replace(/\\/g, '/').replace(/.*\/*, '');
       input.trigger('fileselect', [numFiles, label]);
     });
 
