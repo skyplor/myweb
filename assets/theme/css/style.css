@@ -1721,6 +1721,10 @@ textArea.form-flat {
 .map-content i {
   margin-right: 2px;
 }
+
+.map-content .map-country:after{
+  content: url(../images/Flag_of_Singapore.png)
+}
 /*== TECHNOLOGIES == */
 .box-technologies {
   margin: 0 auto;
