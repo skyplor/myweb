@@ -80,7 +80,7 @@ function listEntries(json) {
     ul.appendChild(li);
   }
 
-  /* Install the bullet list of blog posts. */
+  // Install the bullet list of blog posts. 
   document.getElementById('content').appendChild(ul);
 }
 
@@ -95,18 +95,18 @@ function listEntries(json) {
  *     as a prefix of ".blogspot.com".
  */
 function initBlog() {
-  /* Delete any previous JSON script nodes. */
+  // Delete any previous JSON script nodes. 
   removeOldJSONScriptNodes();
-  /* Clear any old content to prepare to display the Loading... message. */
+  // Clear any old content to prepare to display the Loading... message. */
   removeOldResults();
 
-  /* Show a "Loading..." indicator. */
+  // Show a "Loading..." indicator. 
   var div = document.getElementById('content');
   var p = document.createElement('p');
   p.appendChild(document.createTextNode('Loading...'));
   div.appendChild(p);
 
-  /* Retrieve the JSON feed. */
+  // Retrieve the JSON feed.
   var script = document.createElement('script');
   script.setAttribute('src', 'http://skyplor.blogspot.com/feeds/posts' +
                       '/default??orderby=published&max-results=3&start-index=1&alt=json-in-script&callback=listEntries');
@@ -153,11 +153,11 @@ USAGE:
  var newCutString = obj.cut();
 */
 function CutString(string,limit){
-    /* temporary node to parse the html tags in the string */
+    // temporary node to parse the html tags in the string 
     this.tempDiv = document.createElement('div');
     this.tempDiv.id = "TempNodeForTest";
     this.tempDiv.innerHTML = string;
-    /* while parsing text no of characters parsed */
+    // while parsing text no of characters parsed 
     this.charCount = 0;
     this.limit = limit;
 
@@ -173,7 +173,7 @@ CutString.prototype.searchEnd = function(parseDiv, newParent){
     var newEle;
     for(var j=0; j< parseDiv.childNodes.length; j++){
         ele = parseDiv.childNodes[j];
-        /* not text node */
+        // not text node 
         if(ele.nodeType != 3){
             newEle = ele.cloneNode(true);
             newParent.appendChild(newEle);
@@ -188,7 +188,7 @@ CutString.prototype.searchEnd = function(parseDiv, newParent){
             }
         }
 
-        /* the limit of the char count reached */
+        // the limit of the char count reached 
         if(ele.nodeValue.length + this.charCount >= this.limit){
             newEle = ele.cloneNode(true);
             newEle.nodeValue = ele.nodeValue.substr(0, this.limit - this.charCount);
