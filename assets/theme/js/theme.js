@@ -19,17 +19,19 @@
   }
   
   //Run function When PACE (page loader) hide
-  Pace.on('hide', function() {
-    $('.wrapper').css('visibility', 'visible').animate({opacity: 1.0}, 2000, function() {
-      initCheckNav();
-    });
-    //check if url contain hash(#)
-    if (window.location.hash) {
-      $('.link-inpage[href="' + window.location.hash + '"]').first().trigger('click');
-    }
-  });
+  if (typeof(Pace) != "undefined") {
+	  Pace.on('hide', function() {
+		$('.wrapper').css('visibility', 'visible').animate({opacity: 1.0}, 2000, function() {
+		  initCheckNav();
+		});
+		//check if url contain hash(#)
+		if (window.location.hash) {
+		  $('.link-inpage[href="' + window.location.hash + '"]').first().trigger('click');
+		}
+	  });
+  }
 
-  //Run function When WIndow Resize 
+  //Run function when Window resize 
   $(window).resize(function() {
     initParallax();
   });
