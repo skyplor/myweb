@@ -1082,7 +1082,7 @@ textArea.form-flat {
   width: 20px;
 }
 /*============================
-     05. MAIN-HEADER
+     05. HEADERS
 ============================*/
 .main-header {
   height: 600px;
@@ -1126,6 +1126,20 @@ textArea.form-flat {
   height: 100%;
   background: rgba(255, 255, 255, 0.3);
 }
+
+.portfolio-header .header-content-fixed {
+  background: url(../images/portfolio/portfolio.jpg) no-repeat top;
+  background-size: auto;
+  background-attachment: fixed;
+}
+
+.portfolio-header .header-content-fixed:before {
+  width: 50%;
+}
+.portfolio-header .header-content-fixed:After {
+  width: 50%;
+}
+
 @media (max-width: 1024px) {
   .main-header .header-content-fixed {
     position: relative;
@@ -1156,6 +1170,7 @@ textArea.form-flat {
     font-size: 3em;
   }
 }
+
 .main-header .job {
   position: relative;
   display: inline-block;
